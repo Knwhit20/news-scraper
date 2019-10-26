@@ -2,7 +2,7 @@
 //express
 var express = require("express");
 //express-handlebars
-
+var exphbs = require('express-handlebars');
 //mongoose
 var mongojs = require("mongojs");
 //cheerio
