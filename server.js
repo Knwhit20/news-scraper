@@ -76,24 +76,24 @@ app.get("/scrape", function (req, res) {
         
         var $ = cheerio.load(response.data);
         // For each element with a "title" class
-        $("article").each(function (i, element) {
+        $(".assetWrapper").each(function (i, element) {
             // Save the text and href of each link enclosed in the current element
-            var title = $(element).children("h2").text();
+            var title = $(this).find("h2").text().trim();
             console.log(title);
-            var link = $(element).children("a").attr("href");
+            var link = $(this).find("a").attr("href").trim();
             console.log(link);
-            var image = $(element).parent("figure").children("img").attr("src")
-            console.log(image);
-            var summary = $(element).children("p").text();
+            // var image = $(this).find("img").attr("src")
+            // console.log(image);
+            var summary = $(this).find("p").text().trim();
             console.log(summary);
 
             // If this found element had both a title and a link
-            if (title && link && image && summary) {
+            if (title && link && summary) {
                 // Insert the data in the scrapedData db
                 db.scrapeData.insert({
                     title: title,
-                    link: link,
-                    image: image,
+                    link: "www.nytimes.com" + link,
+                    // image: image,
                     summary: summary
                 },
                     function (err, inserted) {
