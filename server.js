@@ -10,6 +10,10 @@ var mongoose = require ("mongoose");
 var cheerio = require("cheerio");
 //axios
 var axios = require("axios");
+var bodyParser = require("body-parser")
+
+// Require all models
+var db = require("./models");
 
 // Initialize Express
 var app = express();
@@ -20,19 +24,19 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Import routes and give the server access to them.
-var routes = require("public/app.js");
+// // Import routes and give the server access to them.
+// var routes = require("./public/app");
 
-app.use(routes);
+// app.use(routes);
 
 //set handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
-// mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI);
 
 // Database configuration
 var databaseUrl = "scrape";
@@ -67,21 +71,30 @@ app.get("/all", function (req, res) {
 // Scrape data from one site and place it into the mongodb db
 app.get("/scrape", function (req, res) {
     // Make a request via axios for the news section of `ycombinator`
-    axios.get("https://news.ycombinator.com/").then(function (response) {
+    axios.get("https://www.nytimes.com/").then(function (response) {
         // Load the html body from axios into cheerio
+        
         var $ = cheerio.load(response.data);
         // For each element with a "title" class
-        $(".title").each(function (i, element) {
+        $("article").each(function (i, element) {
             // Save the text and href of each link enclosed in the current element
-            var title = $(element).children("a").text();
+            var title = $(element).children("h2").text();
+            console.log(title);
             var link = $(element).children("a").attr("href");
+            console.log(link);
+            var image = $(element).parent("figure").children("img").attr("src")
+            console.log(image);
+            var summary = $(element).children("p").text();
+            console.log(summary);
 
             // If this found element had both a title and a link
-            if (title && link) {
+            if (title && link && image && summary) {
                 // Insert the data in the scrapedData db
                 db.scrapeData.insert({
                     title: title,
-                    link: link
+                    link: link,
+                    image: image,
+                    summary: summary
                 },
                     function (err, inserted) {
                         if (err) {
