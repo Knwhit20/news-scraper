@@ -1,6 +1,6 @@
 # New York Times Article Scraper
 
-## Deployed on Heroku at: 
+## Deployed on Heroku at: https://stroup-webscraper.herokuapp.com/
 
 ## Overview:
 An app that scrapes articles from the New York Times. Users can save articles and add notes on each article.
