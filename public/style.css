@@ -6,3 +6,6 @@ body {
     font-family: 'Inconsolata', monospace;
 }
 
+#save {
+    margin-left: 20px;
+}

@@ -21,8 +21,8 @@ $.getJSON("/articles", function (data) {
             "<h3>" + data[i].title + "</h3>" + "<br />" + 
             "<p>" + data[i].link + "</p>" + "<br />" + 
             "<p>" + data[i].summary + "</p>" + "</p>" +
-            "<button id=note>" + "Add Notes" + "</button>" 
-
+            "<button id='note'>" + "Add Notes" + "</button>" +
+            "<button id='save'>" + "Save" + "</button>"
 
             );
     }
@@ -64,7 +64,7 @@ $(document).on("click", "button", function () {
 });
 
 // When you click the savenote button
-$(document).on("click", "#savenote", function () {
+$(document).on("click", "#save", function () {
     // Grab the id associated with the article from the submit button
     var thisId = $(this).attr("data-id");
 
