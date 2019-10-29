@@ -15,4 +15,4 @@ An app that scrapes articles from the New York Times. Users can save articles an
 7. Bootstrap
 
 ## Still in progress:
-    
+Created save article and delete article in server.js, still need to create button on HTML and javascript to execute save and delete
