@@ -22,41 +22,47 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand">Mongo Scraper</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home</a>
-                <a class="nav-item nav-link" href="saved.html">Saved Articles</a>
-                <button class="btn btn-sm btn-outline-secondary" id="scrape" type="button">Scrape Articles</button>
+    <a href="images/newspaper.jpg">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand">Mongo Scraper</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Home</a>
+                    <a class="nav-item nav-link" href="saved.html">Saved Articles</a>
+                    <button class="btn btn-sm btn-outline-secondary" id="scrape" type="button">Scrape Articles</button>
 
+                </div>
+            </div>
+        </nav>
+        <div class="jumbotron jumbotron-fluid bg-info">
+            <div class="container">
+                <h1 class="display-4" id="jumbotron">New York Times Scraper</h1>
             </div>
         </div>
-    </nav>
-    <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4" id="jumbotron">New York Times Scraper</h1>
+            <table>
+                <tr>
+                    <td>
+                        <div id="articles">
+                            <div id="notes"></div>
+                        </div>
+                            
+                        
+                        
+
+                    </td>
+
+                </tr>
+            </table>
         </div>
+
     </div>
-<div class="container">
-    <table>
-        <tr>
-            <td>
-                <div id="articles"> 
-                    <button type="button" class="btn btn-info">Add Notes</button>
-                    <div id="notes"></div>
-                </div>
-                
-            </td>
-           
-        </tr>
-    </table>
-</div>
-    
+    </a>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="app.js"></script>
