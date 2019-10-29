@@ -4,7 +4,10 @@ $.getJSON("/articles", function (data) {
     for (var i = 0; i < data.length; i++) {
         // Display the apropos information on the page
         $("#articles").append(
-            "<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "<br />" + data[i].summary + "</p>");
+            "<p data-id='" + data[i]._id + "'>" +
+            "<h1>" + data[i].title + "</h1>" + "<br />" + 
+            "<h3>" + data[i].link + "</h3>" + "<br />" + 
+            "<h3>" + data[i].summary + "</h3>" + "</p>");
     }
 });
 
@@ -71,3 +74,5 @@ $(document).on("click", "#savenote", function () {
     $("#titleinput").val("");
     $("#bodyinput").val("");
 });
+
+
