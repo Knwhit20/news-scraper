@@ -135,7 +135,7 @@ app.post("/articles/save/:id", function (req, res) {
     // Use the article id to find and update its saved boolean
     article.findOneAndUpdate({ "_id": req.params.id }, { "saved": true })
         // Execute the above query
-        .exec(function (err, doc) {
+        .then(function (err, doc) {
             // Log any errors
             if (err) {
                 console.log(err);
@@ -152,7 +152,7 @@ app.post("/articles/delete/:id", function (req, res) {
     // Use the article id to find and update its saved boolean
     article.findOneAndUpdate({ "_id": req.params.id }, { "saved": false, "notes": [] })
         // Execute the above query
-        .exec(function (err, doc) {
+        .then(function (err, doc) {
             // Log any errors
             if (err) {
                 console.log(err);

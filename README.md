@@ -13,3 +13,6 @@ An app that scrapes articles from the New York Times. Users can save articles an
 5. Javascript
 6. Cheerio
 7. Bootstrap
+
+## Still in progress:
+    
