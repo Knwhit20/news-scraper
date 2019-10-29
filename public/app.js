@@ -1,13 +1,26 @@
+//scrape button
+$("#scrape").on("click", function () {
+    $.ajax({
+        method: "GET",
+        url: "/scrape",
+    }).done(function (data) {
+        console.log(data)
+        window.location = "/"
+    })
+});
+
+
+
 // Grab the articles as a json
 $.getJSON("/articles", function (data) {
     // For each one
     for (var i = 0; i < data.length; i++) {
-        // Display the apropos information on the page
+        // Display the information on the page
         $("#articles").append(
             "<p data-id='" + data[i]._id + "'>" +
-            "<h1>" + data[i].title + "</h1>" + "<br />" + 
-            "<h3>" + data[i].link + "</h3>" + "<br />" + 
-            "<h3>" + data[i].summary + "</h3>" + "</p>");
+            "<h3>" + data[i].title + "</h3>" + "<br />" + 
+            "<p>" + data[i].link + "</p>" + "<br />" + 
+            "<p>" + data[i].summary + "</p>" + "</p>");
     }
 });
 
@@ -76,3 +89,5 @@ $(document).on("click", "#savenote", function () {
 });
 
 
+
+//save button
